@@ -1,22 +1,11 @@
-import {
-  useEffect,
-  useRef,
-  useState,
-} from "react";
+import { useEffect, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 import defaultProfileImage from "../assets/default-profile.png";
 import Header from "../components/Header.jsx";
 import { useForm } from "../hooks/useForm.js";
-import {
-  modifyInfo,
-  withdrawn,
-} from "../services/userApi.js";
-import {
-  clearLoginUser,
-  getLoginUser,
-  requireLogin,
-} from "../utils/auth.js";
+import { modifyInfo, withdrawn } from "../services/userApi.js";
+import { clearLoginUser, getLoginUser, requireLogin } from "../utils/auth.js";
 import { validateNickname } from "../utils/validation.js";
 
 const PROFILE_PREVIEW_DELAY = 500;
@@ -85,31 +74,17 @@ export default function InfoModifyPage() {
   }
 
   const initialUser = initialUserRef.current;
-  const [nickname, setNickname] = useState(
-    initialUser.nickname,
-  );
-  const [profileImageUrl, setProfileImageUrl] = (
-    useState(initialUser.profileImageUrl)
-  );
-  const [
-    debouncedProfileImageUrl,
-    setDebouncedProfileImageUrl,
-  ] = useState(initialUser.profileImageUrl);
-  const [hasPreviewError, setHasPreviewError] = (
-    useState(false)
-  );
+  const [nickname, setNickname] = useState(initialUser.nickname);
+  const [profileImageUrl, setProfileImageUrl] = useState(initialUser.profileImageUrl);
+  const [debouncedProfileImageUrl, setDebouncedProfileImageUrl] = useState(initialUser.profileImageUrl);
+  const [hasPreviewError, setHasPreviewError] = useState(false);
   const [savedValues, setSavedValues] = useState({
     nickname: initialUser.nickname.trim(),
     profileImageUrl:
       initialUser.profileImageUrl.trim() || null,
   });
-  const [
-    isSuccessToastOpen,
-    setIsSuccessToastOpen,
-  ] = useState(false);
-  const [isWithdrawing, setIsWithdrawing] = (
-    useState(false)
-  );
+  const [isSuccessToastOpen, setIsSuccessToastOpen] = useState(false);
+  const [isWithdrawing, setIsWithdrawing] = useState(false);
   const authCheckedRef = useRef(false);
   const modifyRequestLockRef = useRef(false);
   const withdrawRequestLockRef = useRef(false);

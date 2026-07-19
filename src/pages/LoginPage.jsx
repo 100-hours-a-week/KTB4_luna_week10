@@ -1,16 +1,10 @@
 import { useEffect, useState } from "react";
-import {
-  Link,
-  useNavigate,
-} from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 import { useForm } from "../hooks/useForm.js";
 import { login } from "../services/userApi.js";
 import { redirectIfLoggedIn } from "../utils/auth.js";
-import {
-  validateEmail,
-  validatePassword,
-} from "../utils/validation.js";
+import { validateEmail, validatePassword } from "../utils/validation.js";
 
 const emailRules = {
   validate: (value) => validateEmail(value.trim()),
@@ -44,10 +38,7 @@ function saveLoginUser(data) {
 
 export default function LoginPage() {
   const navigate = useNavigate();
-  const [
-    isPasswordVisible,
-    setIsPasswordVisible,
-  ] = useState(false);
+  const [ isPasswordVisible, setIsPasswordVisible ] = useState(false);
   const {
     formRef,
     register,

@@ -1,24 +1,10 @@
-import {
-  useEffect,
-  useRef,
-  useState,
-} from "react";
-import {
-  Link,
-  useNavigate,
-  useParams,
-} from "react-router-dom";
+import { useEffect, useRef, useState } from "react";
+import { Link, useNavigate, useParams } from "react-router-dom";
 
 import Header from "../components/Header.jsx";
 import { useForm } from "../hooks/useForm.js";
-import {
-  getPostDetail,
-  modifyPost,
-} from "../services/postApi.js";
-import {
-  getLoginUser,
-  requireLogin,
-} from "../utils/auth.js";
+import { getPostDetail, modifyPost } from "../services/postApi.js";
+import { getLoginUser, requireLogin } from "../utils/auth.js";
 
 const INITIAL_MODIFY_STATUS_MESSAGE = {
   text: "기존 게시글을 불러오는 중입니다.",
@@ -59,13 +45,8 @@ export default function PostModifyPage() {
   const currentUserNickname = (
     loginUserRef.current.nickname
   );
-  const [isPostLoaded, setIsPostLoaded] = (
-    useState(false)
-  );
-  const [
-    modifyStatusMessage,
-    setModifyStatusMessage,
-  ] = useState(INITIAL_MODIFY_STATUS_MESSAGE);
+  const [isPostLoaded, setIsPostLoaded] = useState(false);
+  const [ modifyStatusMessage, setModifyStatusMessage ] = useState(INITIAL_MODIFY_STATUS_MESSAGE);
   const initializationRef = useRef({
     postId: undefined,
     request: undefined,

@@ -1,20 +1,10 @@
-import {
-  useEffect,
-  useRef,
-  useState,
-} from "react";
-import {
-  Link,
-  useNavigate,
-} from "react-router-dom";
+import { useEffect, useRef, useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
 
 import Header from "../components/Header.jsx";
 import { getPostList } from "../services/postApi.js";
 import { requireLogin } from "../utils/auth.js";
-import {
-  formatCount,
-  formatDateTime,
-} from "../utils/format.js";
+import { formatCount, formatDateTime } from "../utils/format.js";
 
 function PostListItem({ item }) {
   const author = item.author || {};

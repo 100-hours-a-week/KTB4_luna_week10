@@ -1,22 +1,11 @@
-import {
-  useEffect,
-  useState,
-} from "react";
-import {
-  Link,
-  useNavigate,
-} from "react-router-dom";
+import { useEffect, useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
 
 import defaultProfileImage from "../assets/default-profile.png";
 import { useForm } from "../hooks/useForm.js";
 import { signup } from "../services/userApi.js";
 import { redirectIfLoggedIn } from "../utils/auth.js";
-import {
-  validateEmail,
-  validateNickname,
-  validatePassword,
-  validatePasswordConfirm,
-} from "../utils/validation.js";
+import { validateEmail, validateNickname, validatePassword, validatePasswordConfirm } from "../utils/validation.js";
 
 const FOCUS_ORDER = [
   "email",
@@ -58,30 +47,12 @@ function getErrorMessage(validationResult) {
 export default function SignupPage() {
   const navigate = useNavigate();
   const [password, setPassword] = useState("");
-  const [
-    passwordConfirm,
-    setPasswordConfirm,
-  ] = useState("");
-  const [
-    profileImageUrl,
-    setProfileImageUrl,
-  ] = useState("");
-  const [
-    previewImageUrl,
-    setPreviewImageUrl,
-  ] = useState(defaultProfileImage);
-  const [
-    isPasswordVisible,
-    setIsPasswordVisible,
-  ] = useState(false);
-  const [
-    isPasswordConfirmVisible,
-    setIsPasswordConfirmVisible,
-  ] = useState(false);
-  const [
-    isSuccessDialogOpen,
-    setIsSuccessDialogOpen,
-  ] = useState(false);
+  const [ passwordConfirm, setPasswordConfirm ] = useState("");
+  const [ profileImageUrl, setProfileImageUrl ] = useState("");
+  const [ previewImageUrl, setPreviewImageUrl ] = useState(defaultProfileImage);
+  const [ isPasswordVisible, setIsPasswordVisible ] = useState(false);
+  const [ isPasswordConfirmVisible, setIsPasswordConfirmVisible ] = useState(false);
+  const [ isSuccessDialogOpen, setIsSuccessDialogOpen ] = useState(false);
   const {
     formRef,
     register,

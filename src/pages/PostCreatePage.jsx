@@ -1,22 +1,9 @@
-import {
-  useEffect,
-  useRef,
-  useState,
-} from "react";
-import {
-  Link,
-  useNavigate,
-} from "react-router-dom";
+import { useEffect, useRef, useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
 
 import Header from "../components/Header.jsx";
 import { useForm } from "../hooks/useForm.js";
-import {
-  deleteDraft,
-  getCurrentDraft,
-  publishDraft,
-  saveDraft,
-  updateDraft,
-} from "../services/draftApi.js";
+import { deleteDraft, getCurrentDraft, publishDraft, saveDraft, updateDraft } from "../services/draftApi.js";
 import { postUpload } from "../services/postApi.js";
 import { requireLogin } from "../utils/auth.js";
 import { formatDateTime } from "../utils/format.js";
@@ -59,18 +46,10 @@ function getRequestErrorMessage(error) {
 export default function PostCreatePage() {
   const navigate = useNavigate();
   const [draft, setDraft] = useState(null);
-  const [isDraftLoaded, setIsDraftLoaded] = (
-    useState(false)
-  );
-  const [isDraftLoadModalOpen, setIsDraftLoadModalOpen] = (
-    useState(false)
-  );
-  const [draftMessage, setDraftMessage] = (
-    useState(INITIAL_DRAFT_MESSAGE)
-  );
-  const [isDeletingDraft, setIsDeletingDraft] = (
-    useState(false)
-  );
+  const [isDraftLoaded, setIsDraftLoaded] = useState(false);
+  const [isDraftLoadModalOpen, setIsDraftLoadModalOpen] = useState(false);
+  const [draftMessage, setDraftMessage] = useState(INITIAL_DRAFT_MESSAGE);
+  const [isDeletingDraft, setIsDeletingDraft] = useState(false);
   const loadDraftButtonRef = useRef(null);
   const operationLockRef = useRef(false);
   const draftRequestRef = useRef(undefined);

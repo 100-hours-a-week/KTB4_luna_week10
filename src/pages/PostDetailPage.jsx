@@ -1,14 +1,5 @@
-import {
-  useEffect,
-  useLayoutEffect,
-  useMemo,
-  useRef,
-  useState,
-} from "react";
-import {
-  useNavigate,
-  useParams,
-} from "react-router-dom";
+import { useEffect, useLayoutEffect, useMemo, useRef, useState } from "react";
+import { useNavigate, useParams } from "react-router-dom";
 
 import Header from "../components/Header.jsx";
 import CommentSection from "../components/post-detail/CommentSection.jsx";
@@ -16,16 +7,8 @@ import PostArticle from "../components/post-detail/PostArticle.jsx";
 import ReportModal from "../components/post-detail/ReportModal.jsx";
 import { getRequestErrorMessage } from "../components/post-detail/postDetailUtils.js";
 import { getCommentList } from "../services/commentApi.js";
-import {
-  deletePost,
-  getPostDetail,
-  likePost,
-  unlikePost,
-} from "../services/postApi.js";
-import {
-  getLoginUser,
-  requireLogin,
-} from "../utils/auth.js";
+import { deletePost, getPostDetail, likePost, unlikePost } from "../services/postApi.js";
+import { getLoginUser, requireLogin } from "../utils/auth.js";
 
 const POSITIVE_INTEGER_PATTERN = /^[1-9]\d*$/;
 
@@ -65,16 +48,9 @@ export default function PostDetailPage() {
       message: "",
     })
   );
-  const [isLikePending, setIsLikePending] = (
-    useState(false)
-  );
-  const [isDeletingPost, setIsDeletingPost] = (
-    useState(false)
-  );
-  const [
-    isReportModalOpen,
-    setIsReportModalOpen,
-  ] = useState(false);
+  const [isLikePending, setIsLikePending] = useState(false);
+  const [isDeletingPost, setIsDeletingPost] = useState(false);
+  const [ isReportModalOpen, setIsReportModalOpen ] = useState(false);
   const initializationRef = useRef({
     visit: undefined,
     postRequest: undefined,

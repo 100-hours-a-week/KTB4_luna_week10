@@ -1,22 +1,11 @@
-import {
-  useEffect,
-  useRef,
-  useState,
-} from "react";
+import { useEffect, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 import Header from "../components/Header.jsx";
 import { useForm } from "../hooks/useForm.js";
 import { modifyPassword } from "../services/userApi.js";
-import {
-  getAccessToken,
-  getLoginUser,
-  requireLogin,
-} from "../utils/auth.js";
-import {
-  validatePassword,
-  validatePasswordConfirm,
-} from "../utils/validation.js";
+import { getAccessToken, getLoginUser, requireLogin } from "../utils/auth.js";
+import { validatePassword, validatePasswordConfirm } from "../utils/validation.js";
 
 const SUCCESS_TOAST_DURATION = 1200;
 
@@ -77,22 +66,10 @@ export default function PwModifyPage() {
 
   const userId = loginUserRef.current.userId;
   const [password, setPassword] = useState("");
-  const [
-    passwordConfirm,
-    setPasswordConfirm,
-  ] = useState("");
-  const [
-    isPasswordVisible,
-    setIsPasswordVisible,
-  ] = useState(false);
-  const [
-    isPasswordConfirmVisible,
-    setIsPasswordConfirmVisible,
-  ] = useState(false);
-  const [
-    isSuccessToastOpen,
-    setIsSuccessToastOpen,
-  ] = useState(false);
+  const [ passwordConfirm, setPasswordConfirm ] = useState("");
+  const [ isPasswordVisible, setIsPasswordVisible ] = useState(false);
+  const [ isPasswordConfirmVisible, setIsPasswordConfirmVisible ] = useState(false);
+  const [ isSuccessToastOpen, setIsSuccessToastOpen ] = useState(false);
   const authCheckedRef = useRef(false);
   const successToastTimerRef = useRef(null);
   const {
