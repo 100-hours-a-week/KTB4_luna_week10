@@ -1,4 +1,7 @@
-import { useEffect } from "react";
+import {
+  useCallback,
+  useEffect,
+} from "react";
 
 import {
   ReportReason,
@@ -37,10 +40,21 @@ export default function ReportModal({
     },
   });
 
-  function closeReportModal() {
+  const closeReportModal = useCallback(() => {
     reset();
     onOpenChange(false);
-  }
+  }, [onOpenChange, reset]);
+
+  const closeReportModalByUser = useCallback(() => {
+    if (isSubmitting) {
+      return;
+    }
+
+    closeReportModal();
+  }, [
+    closeReportModal,
+    isSubmitting,
+  ]);
 
   useEffect(() => {
     if (!isOpen) {
@@ -52,11 +66,21 @@ export default function ReportModal({
     formRef.current?.elements
       .namedItem("reason")
       ?.focus();
+  }, [
+    clearErrors,
+    formRef,
+    isOpen,
+    setFormError,
+  ]);
+
+  useEffect(() => {
+    if (!isOpen) {
+      return undefined;
+    }
 
     function handleEscape(event) {
       if (event.key === "Escape") {
-        reset();
-        onOpenChange(false);
+        closeReportModalByUser();
       }
     }
 
@@ -72,12 +96,8 @@ export default function ReportModal({
       );
     };
   }, [
-    clearErrors,
-    formRef,
+    closeReportModalByUser,
     isOpen,
-    onOpenChange,
-    reset,
-    setFormError,
   ]);
 
   function handleInvalidReportSubmit(
@@ -148,7 +168,7 @@ export default function ReportModal({
       className="modal-backdrop"
       onClick={(event) => {
         if (event.target === event.currentTarget) {
-          closeReportModal();
+          closeReportModalByUser();
         }
       }}
     >
@@ -238,7 +258,8 @@ export default function ReportModal({
               id="reportCancelButton"
               className="secondary-button"
               type="button"
-              onClick={closeReportModal}
+              disabled={isSubmitting}
+              onClick={closeReportModalByUser}
             >
               취소
             </button>
