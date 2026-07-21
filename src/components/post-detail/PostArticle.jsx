@@ -1,13 +1,7 @@
 import { Link } from "react-router-dom";
 
-import {
-  MultilineText,
-  ProfileImage,
-} from "./PostDetailPrimitives.jsx";
-import {
-  formatCount,
-  formatDateTime,
-} from "../../utils/format.js";
+import { MultilineText, ProfileImage } from "./PostDetailPrimitives.jsx";
+import { formatCount, formatDateTime } from "../../utils/format.js";
 
 export default function PostArticle({
   postDetail,

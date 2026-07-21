@@ -1,12 +1,6 @@
-import {
-  useCallback,
-  useEffect,
-} from "react";
+import { useCallback, useEffect } from "react";
 
-import {
-  ReportReason,
-  ReportReasonLabel,
-} from "../../constants/reportReason.js";
+import { ReportReason, ReportReasonLabel } from "../../constants/reportReason.js";
 import { useForm } from "../../hooks/useForm.js";
 import { reportPost } from "../../services/postApi.js";
 import { getRequestErrorMessage } from "./postDetailUtils.js";

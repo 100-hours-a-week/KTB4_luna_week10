@@ -23,9 +23,7 @@ export default function CommentSection({
   onPageMessage,
   onReloadComments,
 }) {
-  const [commentBody, setCommentBody] = (
-    useState("")
-  );
+  const [commentBody, setCommentBody] = useState("");
   const {
     formRef,
     register,

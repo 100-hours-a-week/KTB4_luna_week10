@@ -1,14 +1,8 @@
 import { useRef, useState } from "react";
 
-import {
-  deleteComment,
-  modifyComment,
-} from "../../services/commentApi.js";
+import { deleteComment,modifyComment } from "../../services/commentApi.js";
 import { formatDateTime } from "../../utils/format.js";
-import {
-  MultilineText,
-  ProfileImage,
-} from "./PostDetailPrimitives.jsx";
+import { MultilineText, ProfileImage } from "./PostDetailPrimitives.jsx";
 import { getRequestErrorMessage } from "./postDetailUtils.js";
 
 export default function CommentItem({
@@ -21,14 +15,10 @@ export default function CommentItem({
 }) {
   const author = item.author || {};
   const comment = item.comment || {};
-  const [isEditing, setIsEditing] = (
-    useState(false)
-  );
+  const [isEditing, setIsEditing] = useState(false);
   const [editBody, setEditBody] = useState("");
   const [isSaving, setIsSaving] = useState(false);
-  const [isDeleting, setIsDeleting] = (
-    useState(false)
-  );
+  const [isDeleting, setIsDeleting] = useState(false);
   const saveLockRef = useRef(false);
   const deleteLockRef = useRef(false);
   const isOwner = (
